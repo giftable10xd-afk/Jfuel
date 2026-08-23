@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JFUEL SNACKS // FUEL YOUR GRIND — Order via WhatsApp</title>
+<link rel="icon" type="image/png" href="images/logo.png">
 <meta name="description" content="JFuel Snacks — small-batch protein fuel from Lebanon. Real honey, ISO whey, zero junk code. Order via WhatsApp +961 70 117 893.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/orbitron@latest/400.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/orbitron@latest/700.css">
@@ -114,7 +115,10 @@ tailwind.config = {
 <!-- NAV -->
 <header class="fixed top-0 z-50 w-full border-b border-nm/30 bg-void/90 backdrop-blur-md">
   <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-    <a href="#top" class="font-heading text-lg font-black tracking-widest text-white sm:text-xl">JFUEL<span class="gradient-text">SNACKS</span><span class="blink text-nc">▮</span></a>
+    <a href="#top" class="flex items-center gap-2 font-heading text-lg font-black tracking-widest text-white sm:text-xl">
+      <img src="images/logo.png" alt="JFuel Snacks logo" class="h-8 w-8 object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.6)] sm:h-9 sm:w-9">
+      JFUEL<span class="gradient-text">SNACKS</span><span class="blink text-nc">▮</span>
+    </a>
     <nav class="hidden items-center gap-6 text-sm tracking-widest lg:flex">
       <a class="nav-link" href="#products">FUEL_STATION</a>
       <a class="nav-link" href="#specs">SPECS</a>
@@ -207,7 +211,7 @@ tailwind.config = {
       <button data-filter="bars" class="filter-btn">BALLS &amp; BARS</button>
       <button data-filter="honey" class="filter-btn">HONEY</button>
     </div>
-    <div id="productGrid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    <div id="productGrid" class="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4"></div>
   </div>
 </section>
 
@@ -453,7 +457,10 @@ tailwind.config = {
 <footer class="relative border-t-2 border-nm/40 bg-black/80">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
     <div>
-      <p class="font-heading text-xl font-black tracking-widest text-white">JFUEL<span class="gradient-text">SNACKS</span><span class="blink text-nc">▮</span></p>
+      <p class="flex items-center gap-2 font-heading text-xl font-black tracking-widest text-white">
+        <img src="images/logo.png" alt="JFuel Snacks logo" class="h-8 w-8 object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]">
+        JFUEL<span class="gradient-text">SNACKS</span><span class="blink text-nc">▮</span>
+      </p>
       <p class="mt-4 text-sm text-chrome/60">Small-batch protein fuel from the neon grid. Real honey, ISO whey, zero junk code.</p>
       <img src="https://image.qwenlm.ai/public_source/7da2a7a5-8ef1-4c9c-8467-0dbad20f34de/17193ceb7-d5b7-4cb6-8b06-3a917599f8d2.png" alt="Neon snack icons" class="mt-5 w-40 border border-nm/40 opacity-90">
     </div>
@@ -586,16 +593,16 @@ function renderProducts(){
   gridEl.innerHTML = list.map(p => `
     <article class="group relative flex flex-col border border-nm/30 border-t-2 border-t-nc bg-panel/80 backdrop-blur-md transition-all duration-200 ease-linear hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(0,255,255,0.35)]">
       <div class="relative overflow-hidden">
-        <img src="${p.img}" alt="${esc(p.name)}" loading="lazy" class="h-56 w-full bg-black/40 object-contain object-center transition-transform duration-200 ease-linear group-hover:scale-105">
+        <img src="${p.img}" alt="${esc(p.name)}" loading="lazy" class="h-32 w-full bg-black/40 object-contain object-center transition-transform duration-200 ease-linear group-hover:scale-105 sm:h-56">
         <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-nm to-nc opacity-20 mix-blend-overlay"></div>
-        ${p.tag ? `<span class="absolute left-3 top-3 -skew-x-12 border border-no bg-black/80 px-2 py-1 text-xs tracking-widest text-no">${p.tag}</span>` : ''}
+        ${p.tag ? `<span class="absolute left-2 top-2 -skew-x-12 border border-no bg-black/80 px-1.5 py-0.5 text-[10px] tracking-widest text-no sm:left-3 sm:top-3 sm:px-2 sm:py-1 sm:text-xs">${p.tag}</span>` : ''}
       </div>
-      <div class="flex flex-1 flex-col p-5">
-        <h3 class="font-heading text-lg font-bold text-nc drop-shadow-[0_0_5px_rgba(0,255,255,0.8)]">${p.name}</h3>
-        <p class="mt-2 flex-1 text-sm leading-relaxed text-chrome/70">${p.desc}</p>
-        <div class="mt-4 flex items-center justify-between">
-          <span class="font-heading text-xl font-black text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">${money(p.price)}</span>
-          <button ${p.variants ? `data-variant="${p.id}"` : `data-add="${p.id}"`} class="-skew-x-12 border-2 border-nc px-4 py-1.5 font-mono text-sm tracking-widest text-nc transition-all duration-200 ease-linear hover:skew-x-0 hover:bg-nc hover:text-black hover:shadow-[0_0_20px_#00FFFF]"><span class="inline-block skew-x-12">+ ADD</span></button>
+      <div class="flex flex-1 flex-col p-3 sm:p-5">
+        <h3 class="font-heading text-sm font-bold text-nc drop-shadow-[0_0_5px_rgba(0,255,255,0.8)] sm:text-lg">${p.name}</h3>
+        <p class="mt-1 flex-1 text-xs leading-relaxed text-chrome/70 sm:mt-2 sm:text-sm">${p.desc}</p>
+        <div class="mt-3 flex items-center justify-between gap-2 sm:mt-4">
+          <span class="font-heading text-base font-black text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] sm:text-xl">${money(p.price)}</span>
+          <button ${p.variants ? `data-variant="${p.id}"` : `data-add="${p.id}"`} class="-skew-x-12 border-2 border-nc px-2.5 py-1 font-mono text-xs tracking-widest text-nc transition-all duration-200 ease-linear hover:skew-x-0 hover:bg-nc hover:text-black hover:shadow-[0_0_20px_#00FFFF] sm:px-4 sm:py-1.5 sm:text-sm"><span class="inline-block skew-x-12">+ ADD</span></button>
         </div>
       </div>
     </article>`).join('');
